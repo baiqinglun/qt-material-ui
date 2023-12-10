@@ -1,0 +1,5 @@
+MPushButton
+{
+	background-color: #4CAF50; /* Green background */
+	border-radius:5px;
+}

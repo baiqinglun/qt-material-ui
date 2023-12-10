@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(untitled3 LANGUAGES CXX)
+project(qt-material-ui LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -27,19 +27,25 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 if(ANDROID)
-  add_library(untitled3 SHARED
+  add_library(qt-material-ui SHARED
     main.cpp
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    mpushbutton.h
+    mpushbutton.cpp
+    res.qrc
   )
 else()
-  add_executable(untitled3
+  add_executable(qt-material-ui
     main.cpp
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    mpushbutton.h
+    mpushbutton.cpp
+    res.qrc
   )
 endif()
 
-target_link_libraries(untitled3 PRIVATE Qt5::Widgets)
+target_link_libraries(qt-material-ui PRIVATE Qt5::Widgets)

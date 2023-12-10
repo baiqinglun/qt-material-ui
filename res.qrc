@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/qss">
+        <file>qss/material-button.qss</file>
+    </qresource>
+    <qresource prefix="/font">
+        <file>font/0xProtoNerdFontMono-Regular.ttf</file>
+        <file>font/ArimoNerdFont-Bold.ttf</file>
+        <file>font/Roboto-Black-1.ttf</file>
+        <file>font/Roboto-BlackItalic-2.ttf</file>
+        <file>font/Roboto-Bold-3.ttf</file>
+        <file>font/Roboto-BoldItalic-6.ttf</file>
+        <file>font/Roboto-Italic-9.ttf</file>
+        <file>font/Roboto-Light-10.ttf</file>
+        <file>font/Roboto-LightItalic-11.ttf</file>
+        <file>font/Roboto-Medium-12.ttf</file>
+        <file>font/Roboto-MediumItalic-13.ttf</file>
+        <file>font/Roboto-Regular-14.ttf</file>
+        <file>font/Roboto-Thin-15.ttf</file>
+        <file>font/Roboto-ThinItalic-16.ttf</file>
+    </qresource>
+</RCC>
