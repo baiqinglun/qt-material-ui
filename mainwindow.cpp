@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     QHBoxLayout *layout = new QHBoxLayout(this);
-    MPushButton *btn1 = new MPushButton(BtnType::hollow,"click","big","red",this);
+    MPushButton *btn1 = new MPushButton(BtnType::hollow,"click","big","purple",this);
     layout->addWidget(btn1);
     this->setLayout(layout);
 }

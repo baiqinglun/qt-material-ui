@@ -11,7 +11,8 @@ MPushButton::MPushButton(const BtnType btnType,const QString &text,const QString
     this->btnType_ = btnType;
     this->height_ = sizes.contains(size) ? sizes[size] : 30;
     this->bg_color_ = getColorOrDefault(bg_color,bg_colors,main_color_);
-    this->hover_bg_color_ = getColorOrDefault(bg_color, hover_bg_colors, main_hover_color_);
+    this->fill_hover_bg_color_ = getColorOrDefault(bg_color, fill_hover_bg_colors, main_fill_hover_color_);
+    this->text_hover_bg_color_ = getColorOrDefault(bg_color, text_hover_bg_colors, main_text_hover_color_);
     this->pressed_bg_color_ = getColorOrDefault(bg_color,pressed_bg_colors,main_pressed_color_);
     setSheet();
 }
@@ -40,13 +41,17 @@ void MPushButton::setSheet()
                 "    padding-left: %3px;"
                 "    padding-right: %3px;"
                 "}"
+                "MPushButton::hover{"
+                "   background-color: %4;"
+                "}"
                 "MPushButton::pressed {"
-                "    background-color: %4;"
+                "    background-color: %5;"
                 "}"
             )
-            .arg(hover_bg_color_)
+            .arg(bg_color_)
             .arg(height_*0.1)
             .arg(height_*0.2)
+            .arg(text_hover_bg_color_)
             .arg(pressed_bg_color_);
         break;
     case BtnType::fill:
@@ -69,7 +74,7 @@ void MPushButton::setSheet()
             .arg(text_color_)
             .arg(height_*0.1)
             .arg(height_*0.2)
-            .arg(hover_bg_color_)
+            .arg(fill_hover_bg_color_)
             .arg(pressed_bg_color_);
         break;
     case BtnType::hollow:
@@ -85,15 +90,17 @@ void MPushButton::setSheet()
                 "}"
                 "MPushButton::hover{"
                 "    border: 1px solid %4;"
+                "    background-color: %5;"
                 "}"
                 "MPushButton::pressed {"
-                "    background-color: %5;"
+                "    background-color: %6;"
                 "}"
             )
             .arg(bg_color_)
             .arg(height_*0.1)
             .arg(height_*0.2)
-            .arg(hover_bg_color_)
+            .arg(fill_hover_bg_color_)
+            .arg(text_hover_bg_color_)
             .arg(pressed_bg_color_);
         break;
     };
@@ -110,11 +117,12 @@ void MPushButton::readFontFamily()
     this->setFont(font);
 }
 
-void MPushButton::setColor(const QString &bg_color, const QString &hover_bg_color,const QString &pressed_bg_color)
+void MPushButton::setColor(const QString &bg_color, const QString &fill_hover_bg_color,const QString &text_hover_bg_color,const QString &pressed_bg_color)
 {
     this->bg_color_ = bg_color.startsWith("#") ? bg_color : getColorOrDefault(bg_color,bg_colors,main_color_);
-    this->hover_bg_color_ = hover_bg_color.startsWith("#") ? hover_bg_color : getColorOrDefault(hover_bg_color,hover_bg_colors,main_color_);
-    this->pressed_bg_color_ = hover_bg_color.startsWith("#") ? pressed_bg_color : getColorOrDefault(bg_color,pressed_bg_colors,main_pressed_color_);
+    this->fill_hover_bg_color_ = fill_hover_bg_color.startsWith("#") ? fill_hover_bg_color : getColorOrDefault(fill_hover_bg_color,fill_hover_bg_colors,main_fill_hover_color_);
+    this->text_hover_bg_color_ = text_hover_bg_color.startsWith("#") ? text_hover_bg_color : getColorOrDefault(text_hover_bg_color,text_hover_bg_colors,main_text_hover_color_);
+    this->pressed_bg_color_ = pressed_bg_color.startsWith("#") ? pressed_bg_color : getColorOrDefault(bg_color,pressed_bg_colors,main_pressed_color_);
     this->setSheet();
 }
 
@@ -123,7 +131,8 @@ void MPushButton::setColor(const QString &color)
     if(color.startsWith('#'))
         return;
     this->bg_color_ = getColorOrDefault(color,bg_colors,main_color_);
-    this->hover_bg_color_ = getColorOrDefault(color,hover_bg_colors,main_hover_color_);
+    this->fill_hover_bg_color_ = getColorOrDefault(color,fill_hover_bg_colors,main_fill_hover_color_);
+    this->text_hover_bg_color_ = getColorOrDefault(color,text_hover_bg_colors,main_text_hover_color_);
     this->pressed_bg_color_ = getColorOrDefault(color,pressed_bg_colors,main_pressed_color_);
     this->setSheet();
 }
@@ -136,4 +145,3 @@ QString MPushButton::getColorOrDefault(const QString &color, const QMap<QString,
         return defaultColor;
     }
 }
-
